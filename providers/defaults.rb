@@ -3,7 +3,7 @@ require 'shellwords'
 action :write do
   execute "#{new_resource.description} - #{new_resource.domain} - #{new_resource.key}"  do
     command "defaults write #{new_resource.domain} #{key} #{type_flag} #{value}"
-    user node['current_user']
+    user node['sprout']['user']
     not_if "defaults read #{new_resource.domain} #{new_resource.key} | grep ^#{value}$"
   end
 end
