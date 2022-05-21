@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 =begin
 
 A resource/provider to call to MacOS's plist 'defaults' command line tool.
@@ -24,6 +25,8 @@ TODO List:
 * Should support overrides of not_if with a more complex block
 
 =end
+
+unified_mode true if Chef::const_defined?(:VERSION) && Chef::VersionConstraint.new(">= 17.0").include?(Chef::VERSION.to_s)
 
 actions :write
 
